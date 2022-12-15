@@ -46,10 +46,7 @@ object Day02 extends App {
     val score: Int = b.against(a).score + b.score
   }
 
-  sealed trait Score {
-    val score: Int
-  }
-  sealed trait GameOutcome extends Score {
+  sealed trait GameOutcome {
     val score: Int
   }
 
@@ -62,21 +59,21 @@ object Day02 extends App {
         case "Z" => Some(GameOutcome.Win)
         case _   => None
       }
-    case object Win extends GameOutcome { val score = 6 }
+
+    case object Win  extends GameOutcome { val score = 6 }
     case object Draw extends GameOutcome { val score = 3 }
     case object Loss extends GameOutcome { val score = 0 }
   }
 
-  sealed trait Combination extends Score {
+  sealed trait Combination {
     val score: Int
-    def against(c: Combination): GameOutcome
     val losesTo: Combination
-    def against1(c: Combination): GameOutcome = {
-      if (c == losesTo) GameOutcome.Loss
-      else if (c == this) GameOutcome.Draw
+    val against: Combination => GameOutcome = thatCombination =>
+      if (losesTo == thatCombination) GameOutcome.Loss
+      else if (this == thatCombination) GameOutcome.Draw
       else GameOutcome.Win
-    }
   }
+
   object Combination {
 
     def from(s: String): Option[Combination] =
@@ -86,38 +83,20 @@ object Day02 extends App {
         case "C" | "Z" => Some(Scissors)
         case _         => None
       }
+
     case object Rock extends Combination {
-      val score: Int = 1
+      val score: Int           = 1
       val losesTo: Combination = Paper
-
-      def against(c: Combination): GameOutcome =
-        c match {
-          case Rock     => GameOutcome.Draw
-          case Paper    => GameOutcome.Loss
-          case Scissors => GameOutcome.Win
-        }
     }
+
     case object Paper extends Combination {
-      val score: Int = 2
+      val score: Int           = 2
       val losesTo: Combination = Scissors
-
-      def against(c: Combination): GameOutcome =
-        c match {
-          case Paper    => GameOutcome.Draw
-          case Scissors => GameOutcome.Loss
-          case Rock     => GameOutcome.Win
-        }
     }
-    case object Scissors extends Combination {
-      val score: Int = 3
-      val losesTo: Combination = Rock
 
-      def against(c: Combination): GameOutcome =
-        c match {
-          case Scissors => GameOutcome.Draw
-          case Rock     => GameOutcome.Loss
-          case Paper    => GameOutcome.Win
-        }
+    case object Scissors extends Combination {
+      val score: Int           = 3
+      val losesTo: Combination = Rock
     }
 
     val Values: List[Combination] = List(Rock, Paper, Scissors)

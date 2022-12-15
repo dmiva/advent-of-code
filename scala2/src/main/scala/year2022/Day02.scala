@@ -4,7 +4,7 @@ import scala.io.Source
 
 object Day02 extends App {
 
-  val input = Source.fromResource("year2022/day02.txt").getLines()
+  def input: List[String] = Source.fromResource("year2022/day02.txt").getLines().toList
 
   println(s"Solution for part1 is: $part1")
   println(s"Solution for part2 is: $part2")
@@ -70,6 +70,12 @@ object Day02 extends App {
   sealed trait Combination extends Score {
     val score: Int
     def against(c: Combination): GameOutcome
+    val losesTo: Combination
+    def against1(c: Combination): GameOutcome = {
+      if (c == losesTo) GameOutcome.Loss
+      else if (c == this) GameOutcome.Draw
+      else GameOutcome.Win
+    }
   }
   object Combination {
 
@@ -82,6 +88,7 @@ object Day02 extends App {
       }
     case object Rock extends Combination {
       val score: Int = 1
+      val losesTo: Combination = Paper
 
       def against(c: Combination): GameOutcome =
         c match {
@@ -92,6 +99,7 @@ object Day02 extends App {
     }
     case object Paper extends Combination {
       val score: Int = 2
+      val losesTo: Combination = Scissors
 
       def against(c: Combination): GameOutcome =
         c match {
@@ -102,6 +110,7 @@ object Day02 extends App {
     }
     case object Scissors extends Combination {
       val score: Int = 3
+      val losesTo: Combination = Rock
 
       def against(c: Combination): GameOutcome =
         c match {

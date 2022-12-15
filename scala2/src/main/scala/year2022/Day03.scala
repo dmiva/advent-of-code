@@ -5,12 +5,12 @@ import scala.language.implicitConversions
 
 object Day03 extends App {
 
-  val input = Source.fromResource("year2022/day03.txt").getLines()
+  def input: List[String] = Source.fromResource("year2022/day03.txt").getLines().toList
 
-  println(s"Solution for part1 is: ${part1(input)}")
+  println(s"Solution for part1 is: $part1")
 
-  def part1(lines: Iterator[String]): Int =
-    lines.flatMap { line =>
+  def part1: Int =
+    input.flatMap { line =>
       val (a, b) = line.splitAt(line.length / 2)
       (a intersect b).take(1).map(toPriority)
     }.sum

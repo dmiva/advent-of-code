@@ -30,8 +30,8 @@ class Year2022Spec extends AnyWordSpec with Matchers {
       Day03.part1 shouldBe 7848
     }
 
-//    "Part 2" in {
-//      Day03.part2 shouldBe 13726
-//    }
+    "Part 2" in {
+      Day03.part2 shouldBe 2616
+    }
   }
 }

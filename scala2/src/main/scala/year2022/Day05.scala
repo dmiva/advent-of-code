@@ -4,19 +4,19 @@ import scala.io.Source
 
 object Day05 extends App {
 
-//  def input: List[String] = Source.fromResource("year2022/day05.txt").getLines().toList
-  def input: List[String] =
-    List(
-      "    [D]",
-      "[N] [C]",
-      "[Z] [M] [P]",
-      " 1   2   3",
-      "",
-      "move 1 from 2 to 1",
-      "move 3 from 1 to 3",
-      "move 2 from 2 to 1",
-      "move 1 from 1 to 2"
-    )
+  def input: List[String] = Source.fromResource("year2022/day05.txt").getLines().toList
+//  def input: List[String] =
+//    List(
+//      "    [D]",
+//      "[N] [C]",
+//      "[Z] [M] [P]",
+//      " 1   2   3",
+//      "",
+//      "move 1 from 2 to 1",
+//      "move 3 from 1 to 3",
+//      "move 2 from 2 to 1",
+//      "move 1 from 1 to 2"
+//    )
 
   println(s"Solution for part1 is: $part1")
   println(s"Solution for part1 is: $part2")

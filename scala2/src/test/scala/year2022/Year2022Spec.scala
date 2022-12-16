@@ -29,4 +29,9 @@ class Year2022Spec extends AnyWordSpec with Matchers {
     "Part 1" in { Day05.part1 shouldBe "RFFFWBPNS" }
     "Part 2" in { Day05.part2 shouldBe "CQQBBJFCS" }
   }
+
+  "Day 6" when {
+    "Part 1" in { Day06.part1 shouldBe 1343 }
+    "Part 2" in { Day06.part2 shouldBe 2193 }
+  }
 }

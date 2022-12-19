@@ -34,4 +34,9 @@ class Year2022Spec extends AnyWordSpec with Matchers {
     "Part 1" in { Day06.part1 shouldBe 1343 }
     "Part 2" in { Day06.part2 shouldBe 2193 }
   }
+
+  "Day 7" when {
+    "Part 1" in { Day07.part1 shouldBe 1783610 }
+    "Part 2" in { Day07.part2 shouldBe 4370655 }
+  }
 }

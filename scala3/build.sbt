@@ -4,5 +4,6 @@ ThisBuild / scalaVersion := "3.3.6"
 
 lazy val root = (project in file("."))
   .settings(
-    name := "aoc-2025-scala"
+    name := "advent-of-code-scala",
+    libraryDependencies += "org.scalatest" %% "scalatest-funsuite" % "3.2.19" % Test
   )

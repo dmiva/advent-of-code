@@ -23,4 +23,19 @@ object Day02 extends App:
         }.sum
     }.sum
 
-  def part2(input: String): Int = 0
+  def part2(input: String): Long = input
+    .split(",")
+    .map {
+      case s"$low-$high" =>
+        (low.toLong to high.toLong).map { i =>
+          val invalid = isInvalid(i)
+          if (invalid) i else 0L
+        }.sum
+    }.sum
+
+  def isInvalid(i: Long): Boolean =
+    val iStr = i.toString
+    val len = iStr.length
+    (1 until iStr.length).exists { length =>
+      iStr.toList.grouped(length).distinct.length == 1
+    }

@@ -15,6 +15,10 @@ class Day01Spec extends AnyFunSuite:
       |R14
       |L82""".stripMargin
 
-  test("Day01") {
+  test("Day01 part1") {
     assert(Day01.part1(sample) == 3)
+  }
+
+  test("Day01 part2") {
+    assert(Day01.part2(sample) == 6)
   }

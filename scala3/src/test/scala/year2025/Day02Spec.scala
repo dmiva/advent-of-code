@@ -1,5 +1,7 @@
-import aoc2025.Day02
+package year2025
+
 import org.scalatest.funsuite.AnyFunSuite
+import year2025.Day02
 
 class Day02Spec extends AnyFunSuite:
 

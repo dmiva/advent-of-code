@@ -1,4 +1,4 @@
-package aoc2025
+package year2025
 
 import scala.io.Source
 

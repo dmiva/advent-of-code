@@ -1,14 +1,22 @@
 package year2025
 
-import scala.annotation.tailrec
 import scala.io.Source
 
 object Day04 extends App:
-  private val input = Source.fromResource("2025/day04.txt").mkString
+  private val N: Int = 4
+  private val input: String = Source.fromResource(f"2025/day$N%02d.txt").mkString
 
-  def part1(input: String) = accessibleRolls(buildGrid(input))
+  def part1(input: String) = processPart1(input)
+  def part2(input: String) = processPart2(input)
 
-  def part2(input: String) = loop(buildGrid(input), 0)
+  println(s"Solution to Day $N part 1 is ${part1(input)}")
+  println(s"Solution to Day $N part 2 is ${part2(input)}")
+
+  /////////////////////////////////////////////////////////////////////////////
+
+  def processPart1(input: String) = accessibleRolls(buildGrid(input))
+
+  def processPart2(input: String) = loop(buildGrid(input), 0)
 
   def buildGrid(s: String): Set[Pos] =
     s.linesIterator.zipWithIndex.foldLeft(Set.empty[Pos]) { case (grid, (row, x)) =>
@@ -23,7 +31,7 @@ object Day04 extends App:
   def removableRolls(grid: Set[Pos]): Iterable[Pos] =
     grid.collect { case pos if pos.neighbors.count(p => grid.contains(p)) < 4 => pos }
 
-  @tailrec
+  @scala.annotation.tailrec
   def loop(grid: Set[Pos], removed: Int): Int =
     val toRemove = removableRolls(grid)
     if (toRemove.nonEmpty) loop(grid.removedAll(toRemove), removed + toRemove.size)
@@ -38,9 +46,3 @@ object Day04 extends App:
       allPos.filterNot(p => p.x == x && p.y == y)
     }
   }
-
-  val answer1 = part1(input)
-  val answer2 = part2(input)
-
-  println(s"Solution to part 1 is $answer1")
-  println(s"Solution to part 2 is $answer2")

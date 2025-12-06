@@ -1,11 +1,17 @@
 package year2025
 
 import org.scalatest.funsuite.AnyFunSuite
-import year2025.Day03
 
 class Day05Spec extends AnyFunSuite:
+  private val N = 5
 
-  val sample: String =
+  test(f"Day$N%02d part1") 
+    assert(Day05.part1(sample) == 3)
+
+  test(f"Day$N%02d part2") 
+    assert(Day05.part2(sample) == 14)
+
+  def sample: String =
     """3-5
       |10-14
       |16-20
@@ -17,11 +23,3 @@ class Day05Spec extends AnyFunSuite:
       |11
       |17
       |32""".stripMargin
-
-  test("Day05 part1") {
-    assert(Day05.part1(sample) == 3)
-  }
-
-  test("Day05 part2") {
-    assert(Day05.part2(sample) == 14)
-  }

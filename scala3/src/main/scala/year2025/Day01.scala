@@ -2,20 +2,19 @@ package year2025
 
 import scala.io.Source
 
-object Day01:
-  private val input = Source.fromResource("aoc2025/day01.txt").mkString
+object Day01 extends App:
+  private val N: Int = 1
+  private val input: String = Source.fromResource(f"2025/day$N%02d.txt").mkString
 
-  @main
-  def part1(): Unit =
-    val answer = part1(input)
-    println(s"Solution is $answer") // 1097
+  def part1(input: String) = processPart1(input)
+  def part2(input: String) = processPart2(input)
 
-  @main
-  def part2(): Unit =
-    val answer = part2(input)
-    println(s"Solution is $answer") // 7101
+  println(s"Solution to Day $N part 1 is ${part1(input)}")
+  println(s"Solution to Day $N part 2 is ${part2(input)}")
 
-  def part1(input: String): Int = input
+  /////////////////////////////////////////////////////////////////////////////
+  
+  def processPart1(input: String): Int = input
     .linesIterator
     .foldLeft((50, 0)) { case ((before, timesZero), elem) =>
       val delta = elem match
@@ -28,7 +27,7 @@ object Day01:
     }
     ._2
 
-  def part2(input: String): Int = input
+  def processPart2(input: String): Int = input
     .linesIterator
     .foldLeft((50, 0)) { case ((before, timesZero), elem) =>
       val delta = elem match

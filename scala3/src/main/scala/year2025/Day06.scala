@@ -7,12 +7,10 @@ object Day06 extends App:
   private val input: String = Source.fromResource(f"2025/day$N%02d.txt").mkString
 
   def part1(input: String) = processPart1(input)
-  val answer1 = part1(input)
-  println(s"Solution to part 1 is $answer1")
-
   def part2(input: String) = processPart2(input)
-  val answer2 = part2(input)
-  println(s"Solution to part 2 is $answer2")
+
+  println(s"Solution to Day $N part 1 is ${part1(input)}")
+  println(s"Solution to Day $N part 2 is ${part2(input)}")
 
   /////////////////////////////////////////////////////////////////////////////
 

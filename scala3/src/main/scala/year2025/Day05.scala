@@ -9,8 +9,8 @@ object Day05 extends App:
   def part1(input: String) = processPart1(input)
   def part2(input: String) = processPart2(input)
 
-  println(s"Solution to part 1 is ${part1(input)}")
-  println(s"Solution to part 2 is ${part2(input)}")
+  println(s"Solution to Day $N part 1 is ${part1(input)}")
+  println(s"Solution to Day $N part 2 is ${part2(input)}")
 
   /////////////////////////////////////////////////////////////////////////////
 

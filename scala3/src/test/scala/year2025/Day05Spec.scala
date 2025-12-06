@@ -18,12 +18,6 @@ class Day05Spec extends AnyFunSuite:
       |17
       |32""".stripMargin
 
-  val sample2: String =
-    """3-7
-      |4-5
-      |5-6
-      |""".stripMargin
-
   test("Day05 part1") {
     assert(Day05.part1(sample) == 3)
   }

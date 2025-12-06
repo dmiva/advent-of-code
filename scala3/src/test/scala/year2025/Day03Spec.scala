@@ -9,11 +9,11 @@ class Day03Spec extends AnyFunSuite:
                                  |811111111111119
                                  |234234234234278
                                  |818181911112111""".stripMargin
-  
+
   test("Day03 part1") {
     assert(Day03.part1(sample) == 357)
   }
 
   test("Day03 part2") {
-    assert(Day03.part2(sample) == 0)
+    assert(Day03.part2(sample) == 3121910778619L)
   }

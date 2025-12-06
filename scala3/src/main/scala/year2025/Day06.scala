@@ -30,5 +30,24 @@ object Day06 extends App:
       }
       .sum
 
-  def processPart2(input: String) = 0
-
+  def processPart2(input: String) =
+    input
+      .linesIterator
+      .toList
+      .transpose
+      .map(_.mkString.trim)
+      .foldLeft(List.empty[List[String]]) { (lists, b) =>
+        if (b.nonEmpty)
+            lists match {
+              case Nil          => List(List(b))
+              case head :: tail => List(b :: head) ::: tail
+            }
+        else List(Nil) ::: lists
+      }
+      .map(_.reverse)
+      .map {
+        case s"$number*" :: numbers => (number.trim :: numbers).map(_.toLong).product
+        case s"$number+" :: numbers => (number.trim :: numbers).map(_.toLong).sum
+        case _ => 0
+      }
+      .sum

@@ -6,26 +6,12 @@ import scala.io.Source
 object Day03 extends App:
   private val input = Source.fromResource("2025/day03.txt").mkString
 
-  def part1(input: String) = input
-    .linesIterator
-    .map(_.map(_.asDigit)
-    .foldRight((0, 0)) { case (n, (maxDoubleDigit, maxSingleDigit)) =>
-      val newMaxSingle = if (n > maxSingleDigit) n else maxSingleDigit
-      val nn = n * 10 + maxSingleDigit
-      val newMaxDouble = {
-        if (maxDoubleDigit == 0) n
-        else if (nn > maxDoubleDigit) nn
-        else maxDoubleDigit
-      }
-
-      (newMaxDouble, newMaxSingle)
-    })
-    .map { case (nn, n) => nn }
-    .sum
+  def part1(input: String) = input.linesIterator.map(process(_, 2)).toList.sum
 
   def part2(input: String) = input.linesIterator.map(process(_, 12)).toList.sum
 
-  def process(s: String, n: Int): Long = listOfIntsToNumber(loop(s.map(_.asDigit).toList, 0, s.length - n, n, List.empty))
+  def process(s: String, n: Int): Long =
+    listOfIntsToNumber(loop(s.map(_.asDigit).toList, 0, s.length - n, n, List.empty))
 
   @tailrec
   def loop(list: List[Int], left: Int, right: Int, n: Int, numbers: List[Int]): List[Int] = {

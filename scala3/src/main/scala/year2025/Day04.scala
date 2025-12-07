@@ -1,10 +1,11 @@
 package year2025
 
 import scala.io.Source
+import scala.util.Try
 
 object Day04 extends App:
   private val N: Int = 4
-  private val input: String = Source.fromResource(f"2025/day$N%02d.txt").mkString
+  private val input: String = Try(Source.fromResource(f"2025/day$N%02d.txt").mkString).toOption.getOrElse("")
 
   def part1(input: String) = processPart1(input)
   def part2(input: String) = processPart2(input)
